@@ -1,0 +1,44 @@
+## Visual Studio 
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+## JetBrains (Rider)
+.idea/
+*.sln.iml
+
+## OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+## User-specific files
+*.rsuser
+*.suo
+*.user
+*.userdefaults
+
+## Entity Framework / Database
+*.db
+*.sqlite
+/appsettings.Development.json
+
+## Sensitive config
+**/appsettings.json
+
+## Environment variables
+.env
+.env.*

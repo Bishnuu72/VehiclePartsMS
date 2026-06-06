@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="VehiclePartsMS.Domain\VehiclePartsMS.Domain.csproj" Type="Classic C#" />
+  <Project Path="VehiclePartsMS.Application\VehiclePartsMS.Application.csproj" Type="Classic C#" />
+  <Project Path="VehiclePartsMS.Infrastructure\VehiclePartsMS.Infrastructure.csproj" Type="Classic C#" />
+  <Project Path="VehiclePartsMS.Api\VehiclePartsMS.csproj" />
+</Solution>
