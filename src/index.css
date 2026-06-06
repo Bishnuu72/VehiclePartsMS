@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  Base styles MUST live inside @layer base.
+  Tailwind v4 emits all utilities inside cascade layers; any unlayered rule
+  (e.g. a bare `* { margin:0 }`) outranks every layered utility and silently
+  nukes spacing/padding utilities app-wide. Keeping these in @layer base lets
+  utilities (space-y-*, p-*, m-*, …) override them correctly.
+*/
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  body {
+    background-color: #f2f2f7;
+    color: #1d1d1f;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  html.dark body {
+    background-color: #080808;
+    color: #f5f5f7;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  /* Theme transition — colors only, never layout properties */
+  *, *::before, *::after {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-duration: 120ms;
+    transition-timing-function: ease;
+  }
+
+  /* Accessible fallback focus ring (components may add their own) */
+  :focus-visible {
+    outline: 2px solid rgba(0, 0, 0, 0.35);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  html.dark :focus-visible {
+    outline-color: rgba(255, 255, 255, 0.35);
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 99px; }
+html.dark ::-webkit-scrollbar-thumb { background: #3f3f46; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+html.dark ::-webkit-scrollbar-thumb:hover { background: #52525b; }
+
+/* Text selection */
+::selection { background: rgba(0, 0, 0, 0.1); }
+html.dark ::selection { background: rgba(255, 255, 255, 0.15); }
+
+/* ── Shared motion primitives (subtle, professional) ── */
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; }
+}
